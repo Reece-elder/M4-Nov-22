@@ -1,0 +1,18 @@
+SSH - Secure Shell
+Used to connect to another instance
+
+Command to SSH to other node
+ssh -i <path to file> <username>@<public ip>
+
+ssh-keygen - generate a key
+
+.ssh/authorized_keys - contains your public keys, in order to ssh to this machine you need the public keys from the other node
+
+cat id_rsa.pub 
+
+nano authorized_keys - add the public key from the other file to this file
+
+ssh -i id_rsa username@public ip
+
+Exercise - Within your groups, SSH into the others machine, leave a message with your name and exit. Use new public and private keys for this task 
+
