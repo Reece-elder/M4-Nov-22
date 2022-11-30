@@ -1,0 +1,18 @@
+The package manager to install via ubuntu 
+
+apt - Package Manager for ubuntu
+
+Update the package manager
+sudo apt update (my choice)
+
+sudo apt-get update
+
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install nginx (install nginx), the terminal hands and awaits an input
+
+sudo apt install package -y (skips the y / n command) 
+
+curl localhost -> Print the HTML running on this local IP:80
+
+systemctl status <service name>
