@@ -1,0 +1,12 @@
+Docker containers
+
+Containers have an assigned image, name, ports, command etc. And will continiously run until stopped
+
+Run nginx as a container we use the following command
+`docker run -d -p 80:80 --name nginxContainer nginx`
+-d: detached, runs in background
+-p: port publishing, <host port> : <container port>
+--name: name of our container
+<image>
+
+`docker ps` - outputs all current containers
