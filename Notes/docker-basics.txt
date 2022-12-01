@@ -1,0 +1,12 @@
+Docker is an open source containerisation tool that can be easily installed on Linux by curling a web hosted script
+
+sudo apt update
+sudo apt install curl -y
+curl https://get.docker.com/ | sudo bash
+
+Whatever curl outputs, plug it in to the bash (terminal shell)
+
+sudo usermod -aG docker $(whoami) -
+as admin, modify the users, and add the current user (whoami) to the docker Group
+
+sudo reboot - reboot our terminal(to ensure we can run docker commands without sudo)
