@@ -1,0 +1,15 @@
+Docker Images
+
+Within the terminal where Docker is installed, run `docker login`
+
+`docker search mongo` - displays images related to mongo
+
+`docker pull <image name>`
+`docker images` - displays all images downloaded
+
+`docker tag <image name> <my username>/<new image name>
+
+`docker rmi <image name>`
+`docker rmi <image id>`
+removes these images
+

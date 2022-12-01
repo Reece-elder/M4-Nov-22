@@ -10,3 +10,6 @@ sudo usermod -aG docker $(whoami) -
 as admin, modify the users, and add the current user (whoami) to the docker Group
 
 sudo reboot - reboot our terminal(to ensure we can run docker commands without sudo)
+
+docker run --rm hello-world
+Runs a basic hello world container
