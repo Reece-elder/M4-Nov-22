@@ -1,45 +1,24 @@
-nginx as a web server
+NGINX load balancer
 
-1) We need to modify our nginx.conf to host a web server
+Distributes requests across all associated Servers, so that one server doesnt get overloaded
+
+1x Load balancer nginx
+2x Basic nginx web servers
 
 events {}
+
 http {
+    # create an 'upstream' object of this name (web-server-group)
+    upstream web-server-group {
+        # These server values are the servers we want to load balance
+        server 54.75.56.61:80;
+        server 3.252.196.226:80;
+    }
     server {
         listen 80;
-        # Where our app resources are
-        root /opt/web-app;
-        # What our default page is
-        index index.html;
-        # What multimedia types we want to include
-        include /etc/nginx/mime.types;
         location / {
-            # What files do we attempt to host
-            try_files $uri $uri/ /;
+            # proxy pass to http:// <name of upstream>
+            proxy_pass http://web-server-group;
         }
     }
 }
-
-2) We need to create a directory to store our web app resources
-`mkdir web-app`
-
-3) Create our resources
-index.html:
-<body>
-    <h2 id="header"> This is a header </h2>
-    <h4> This is smaller text </h2>
-    <button type="button" onclick="changeColour()"> Change header colour </button>
-    <script src ="index.js"></script>
-</body>
-
-index.js:
-let header = document.querySelector("#header");
-
-function changeColour() {
-    header.style.color = "magenta"
-}
-
-4) move our resoruces to where nginx can use them
-sudo mv web-app /opt
-
-5) Reload our nginx
-sudo systemctl reload nginx
