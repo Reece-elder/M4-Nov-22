@@ -1,0 +1,14 @@
+When we access nginx it is purely hosting a dummy website, we can configure what nginx hosts so we can make it useful
+
+within the program files of nginx is a file called nginx.conf
+/etc/nginx/nginx.conf
+
+clear - clears all text in the console
+
+edit the nginx.conf with vim / nano
+sudo vim nginx.conf
+sudo nano nginx.conf
+
+i to enter insert mode
+esc to exit insert mode
+:wq to quit out of vim

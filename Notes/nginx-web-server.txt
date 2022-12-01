@@ -1,0 +1,45 @@
+nginx as a web server
+
+1) We need to modify our nginx.conf to host a web server
+
+events {}
+http {
+    server {
+        listen 80;
+        # Where our app resources are
+        root /opt/web-app;
+        # What our default page is
+        index index.html;
+        # What multimedia types we want to include
+        include /etc/nginx/mime.types;
+        location / {
+            # What files do we attempt to host
+            try_files $uri $uri/ /;
+        }
+    }
+}
+
+2) We need to create a directory to store our web app resources
+`mkdir web-app`
+
+3) Create our resources
+index.html:
+<body>
+    <h2 id="header"> This is a header </h2>
+    <h4> This is smaller text </h2>
+    <button type="button" onclick="changeColour()"> Change header colour </button>
+    <script src ="index.js"></script>
+</body>
+
+index.js:
+let header = document.querySelector("#header");
+
+function changeColour() {
+    header.style.color = "magenta"
+}
+
+4) move our resoruces to where nginx can use them
+sudo mv web-app /opt
+
+5) Reload our nginx
+sudo systemctl reload nginx
