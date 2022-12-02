@@ -1,0 +1,29 @@
+Dockerfile Complex
+
+When running a flask app you'd need to do the following: 
+
+- Have python installed
+- Use pip to install flask
+- Run and execute the python application 
+- Ensure you have port 5000 open
+
+Dockerfile contents:
+# Using python as a base image (be linux based with python / flask installed)
+FROM python:3.7
+# Within our container, create and set this as our work directory
+WORKDIR /cool-flask-app
+# Move our app.py into this location
+COPY cool-app.py .
+# Use pip to install flask
+RUN pip install flask
+# Expose doesn't 'do anything' but is documenting the port to open
+EXPOSE 5000
+# Final command is running the app
+ENTRYPOINT python cool-app.py
+
+docker build -t custom-flaskapp .
+
+docker run -d -p 80:5000 --name flaskcontainer reeceqa/custom-flask
+
+Enter /console at the end of your URL to access an interactive console running python. Will require a pin, can be accessed by looking through docker logs of container
+http://34.241.120.77/console
