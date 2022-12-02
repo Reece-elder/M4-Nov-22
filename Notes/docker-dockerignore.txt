@@ -1,0 +1,26 @@
+Dockerignore
+
+Dockerignore files work exactly the same as .gitignore, they allow us to EXPLICITLY deny tracking of files when using wildcards
+
+Its more efficient to allow all and explicitly deny some, than explicitly allow the majority
+
+`touch .dockerignore`
+
+# This ignore password.txt
+password.txt
+
+# Ignore all Markdown files
+*.md
+
+# Make an exception for README
+!README.md
+
+# Ignore the creds folder and all content
+creds
+
+Build and run our image
+docker build -t <name> .
+docker run -d -p 81:5500 <image name>
+
+Exec into container to check passwords
+docker exec -it <container name> bash
