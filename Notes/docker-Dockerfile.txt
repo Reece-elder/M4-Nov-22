@@ -1,0 +1,20 @@
+Dockerfile 
+
+Dockerfiles are the templates for building Images, Dockerfiles allow us to create custom images which we can then publish or build containers from 
+
+All images are built off of something, we use an existing image as a template
+
+We start with the nginx image, and build off of it
+
+Create a `Dockerfile` and add the following:
+
+# All Dockerfiles start from a template
+FROM nginx:latest
+
+# Modify the default html in nginx stored in /usr/share/nginx/html
+# When we are creating Dockerfiles, it is a series of command words and values
+RUN echo "This is custom html :)" > /usr/share/nginx/html/index.html 
+
+RUN echo "Container started!" 
+
+docker build -t <name of image> <path to Dockerfile> (if in this location use .)
