@@ -1,0 +1,33 @@
+Docker Lab 8 Requirements
+
+- Docker Network 
+- Container running task 1 (python flask app)
+- Container running an nginx reverse proxy
+- Build images for the reverse proxy
+
+Running my task1 container
+docker run -d --network lab8 --name task1-cont task1-flask
+
+Created my nginx.conf 
+# conf file for a reverse proxy 
+events {}
+http {
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://task1-cont:5500;
+        }
+    }
+}
+
+Creating my Dockerfile:
+# Dockerfile to create an nginx reverse proxy
+FROM nginx:latest
+
+COPY . /etc/nginx
+
+Building my image
+docker build -t lab8-proxy-pass .
+
+Running my container with my image I have just built
+docker run -d -p 80:80 --network lab8 lab8-proxy-pass
