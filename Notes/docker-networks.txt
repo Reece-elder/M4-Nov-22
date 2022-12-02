@@ -1,0 +1,40 @@
+Docker Networks
+
+Creating a container that runs nginx, and an nginx container that will proxy pass to it
+
+Create our docker custom network
+`docker network create app`
+`docker network ls` -> Outputs all docker networks
+
+Create an nginx container that hasn't got published ports (no way to access from host vm directly)
+
+docker run -d --network app --name nginx-container nginx
+
+Build our proxy pass container
+docker build -t proxy-pass-abc .
+
+Run our proxy pass docker container 
+docker run -d -p 80:80 --network app --name proxy-pass proxy-pass-abc
+
+When we curl localhost we are sent to the proxy pass which CAN access the container that has no port published
+
+files for proxy-pass
+
+nginx.conf
+events {}
+http {
+    server {
+        listen 80;
+        location / {
+            # We enter the NAME of the container in the network app
+            proxy_pass http://nginx-container; 
+        }
+    }
+} 
+
+Dockerfile
+FROM nginx:latest
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+
