@@ -1,0 +1,17 @@
+Put this into a .sh folder
+
+
+#! /bin/bash
+# Shebang which tells the script how to run this file
+
+sudo apt update
+sudo apt install curl -y
+curl https://get.docker.com | sudo bash
+sudo usermod -aG docker $(whoami) 
+
+echo "Rebooting terminal"
+sudo reboot
+
+
+sudo chmod +x <name of.sh>
+./<name of .sh>
