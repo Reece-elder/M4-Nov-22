@@ -1,0 +1,21 @@
+# Comments are '#' still
+# Yaml files are either .yaml or .yml
+# YAML - Yet Another Markup Language OR YAML Ain't Markup Language
+# YAML consists of Key: value pairs, where a value could be a nested key: value pair
+# |order: 
+# |  drink: coffee
+# |  name: reece
+# In YAML SPACING MATTERS. Your spacing should be the same across the document in even amounts (NO TABS)
+
+# With Docker compose the first thing is version
+version: "3.8"
+# Services are the deployments we wish to create
+services:
+  # Web Server is the name of my service
+  web-server:
+    image: nginx
+    # The value of my ports MUST be a map, which is a further set of objects
+    ports:
+    - "80:80"
+
+# To run our compose use `docker-compose up -d`
