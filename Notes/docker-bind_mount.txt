@@ -6,7 +6,7 @@ Make your nginx.conf
 events {}
 http {
     server {
-        lisen 80;
+        listen 80;
         location / {
             return 200 "This has been bind mounted!";
         }
