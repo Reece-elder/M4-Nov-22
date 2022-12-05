@@ -1,0 +1,18 @@
+Bind Mounts and Volumes
+
+Mounts:
+Make your nginx.conf
+
+events {}
+http {
+    server {
+        lisen 80;
+        location / {
+            return 200 "This has been bind mounted!";
+        }
+    }
+}
+
+Run a standard nginx container but specifying we want to bind mount our nginx.conf stored here
+
+docker run -d -p 80:80 --name nginx-mount --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx:latest
