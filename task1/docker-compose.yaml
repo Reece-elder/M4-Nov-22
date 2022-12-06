@@ -5,9 +5,13 @@ services:
     image: flask-frontend:latest
     expose: 
     - 5500
+    networks:
+    - task-1
   nginx:
     image: nginx:latest
     volumes: 
     - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
     - "80:80"
+    networks:
+    - task-1
