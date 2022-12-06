@@ -1,4 +1,5 @@
-#! bin/bash
+#! /bin/bash
+
 # Removes all images
 docker rmi -f $(docker images -aq)
 
