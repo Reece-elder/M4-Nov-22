@@ -5,9 +5,15 @@ pipeline {
             steps {
                 sh "ls"
                 sh "pwd"
-                sh "mkdir pipeline_demo"
+                // sh "mkdir pipeline_demo"
                 sh "cd pipeline_demo"
                 sh "ls"
+            }
+        }
+        stage('Build Stage'){
+            steps {
+                sh "chmod +x Jenkins/003-Basic_pipeline/buildScript.sh"
+                sh "Jenkins/003-Basic_pipeline/buildScript.sh"
             }
         }
     }
