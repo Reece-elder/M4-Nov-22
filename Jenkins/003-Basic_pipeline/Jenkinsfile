@@ -29,8 +29,8 @@ pipeline {
         stage('Task 1 job'){
             steps {
                 sh "ls"
-                sh "chmod +x new_script.sh"
-                sh "./new_script.sh"
+                sh "chmod +x task1/buildScript.sh"
+                sh "./task1/buildScript.sh"
                 sh "curl localhost"
             }
         }
