@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh "ls"
                 sh "chmod +x task-1.sh"
-                sh "./task-1.sh"
+                sh "task-1.sh"
                 sh "curl localhost"
                 sh "exit 0"
             }
