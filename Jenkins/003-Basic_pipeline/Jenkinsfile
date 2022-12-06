@@ -29,7 +29,7 @@ pipeline {
         stage('Task 1 job'){
             steps {
                 sh "chmod +x Jenkins/003-Basic_pipeline/task-1.sh"
-                sh "Jenkins/003-Basic_pipeline/task-1.sh"
+                sh "./Jenkins/003-Basic_pipeline/task-1.sh"
                 sh "curl localhost"
                 sh "exit 0"
             }
