@@ -16,5 +16,15 @@ pipeline {
                 sh "Jenkins/003-Basic_pipeline/buildScript.sh"
             }
         }
+        stage('Docker Tools'){
+            steps {
+                // Docker installed on the machine Jenkins is installed
+                // Installing docker, adding Jenkins to user group
+                // Login as Jenkins with sudo su jenkins, check if Jenkins can run Docker `docker run --rm hello-world`
+                sh "docker run -d -p 80:80 nginx"
+                sh "curl localhost"
+                sh "exit 1"
+            }
+        }
     }
 }
