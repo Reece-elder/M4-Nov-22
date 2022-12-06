@@ -10,21 +10,34 @@ pipeline {
                 sh "ls"
             }
         }
-        stage('Build Stage'){
+        // stage('Build Stage'){
+        //     steps {
+        //         sh "chmod +x Jenkins/003-Basic_pipeline/buildScript.sh"
+        //         sh "Jenkins/003-Basic_pipeline/buildScript.sh"
+        //     }
+        // }
+        // stage('Docker Tools'){
+        //     steps {
+        //         // Docker installed on the machine Jenkins is installed
+        //         // Installing docker, adding Jenkins to user group
+        //         // Login as Jenkins with sudo su jenkins, check if Jenkins can run Docker `docker run --rm hello-world`
+        //         sh "docker run -d -p 80:80 nginx"
+        //         sh "curl localhost"
+        //         sh "exit 1"
+        //     }
+        // }
+        stage('Task 1 job'){
             steps {
-                sh "chmod +x Jenkins/003-Basic_pipeline/buildScript.sh"
-                sh "Jenkins/003-Basic_pipeline/buildScript.sh"
+                sh "chmod +x Jenkins/003-Basic_pipeline/task-1.sh"
+                sh "Jenkins/003-Basic_pipeline/task-1.sh"
+                sh "curl localhost"
+                sh "exit 0"
             }
         }
-        stage('Docker Tools'){
-            steps {
-                // Docker installed on the machine Jenkins is installed
-                // Installing docker, adding Jenkins to user group
-                // Login as Jenkins with sudo su jenkins, check if Jenkins can run Docker `docker run --rm hello-world`
-                sh "docker run -d -p 80:80 nginx"
-                sh "curl localhost"
-                sh "exit 1"
-            }
+    }
+    post { 
+        always { 
+            cleanWs()
         }
     }
 }
