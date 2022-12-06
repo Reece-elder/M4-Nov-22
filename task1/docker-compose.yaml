@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   flask-app:
-    build: .
+    build: ./frontend
     image: flask-frontend:latest
     expose: 
     - 5500
