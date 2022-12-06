@@ -3,7 +3,8 @@ services:
   flask-app:
     build: .
     image: flask-frontend:latest
-    expose: 5500
+    expose: 
+    - 5500
   nginx:
     image: nginx:latest
     volumes: 
