@@ -1,0 +1,36 @@
+# Deployment of nginx containers
+# Load balancer that wraps all of the containers
+
+# deployments version is apps/v1 rather than just v1
+apiVersion: apps/v1 
+kind: Deployment # When using deployment, it is a lowercase d
+metadata: 
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec: # spec of the deployment is how the deployment works, not the containers
+  replicas: 4 # Make 4 replicas of our chosen pod
+  selector:   # Looking for templates (pod configs) that match this selection
+    matchLabels: # deployments require you to enter matchLabels: rather than directly adding label
+      app: nginx
+  template:   # You add configs in the EXACT SAME WAY as you would a normal pod
+    metadata: 
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-pod
+        image: nginx:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer
+spec:
+  selector: 
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
