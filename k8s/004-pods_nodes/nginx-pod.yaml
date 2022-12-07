@@ -1,0 +1,20 @@
+# YAML files support key value pairs
+# The first key value pair is the version of API we're using
+apiVersion: v1
+# What resource we are creating
+kind: Pod
+# Any extra data with metadata
+metadata:
+  name: nginx-pod  # name of the pod
+  labels:          # Extra key value pairs we can assign to group resources
+    app: demo-app
+# What is this pod doing?
+spec:
+  containers:
+  - name: nginx-container # name of continer
+    image: nginx:latest   # image we're using
+    ports: 
+    - containerPort: 80
+    env:
+    - name: COOL_VAR
+      value: "Not as cool value.."
