@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels: 
+    app: nginx
+  namespace: test-namespace # Inside of the metadata, you can set the namespace
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
